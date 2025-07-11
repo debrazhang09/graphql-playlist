@@ -1,6 +1,7 @@
 const express = require('express');
 const {graphqlHTTP} = require('express-graphql');
 const schema = require('./schema/schema');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost:27017/graphql_playground')
@@ -8,6 +9,10 @@ mongoose.connect('mongodb://localhost:27017/graphql_playground')
 .catch(err => console.error('Connection error:', err));
 
 const app = express();
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}))
 app.use('/graphql',graphqlHTTP({
   schema,
   graphiql: true
