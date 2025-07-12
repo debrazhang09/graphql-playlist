@@ -15,7 +15,11 @@ app.use(cors({
 }))
 app.use('/graphql',graphqlHTTP({
   schema,
-  graphiql: true
+  graphiql: true,
+  customFormatErrorFn: (err) => {
+    console.error('GraphQL error:', err.message);
+    return {message: err.message, statusCode: 500}
+  }
 
 }));
 
