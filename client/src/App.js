@@ -7,7 +7,7 @@ function App() {
     <Router>
     <div id="main">
       <h1>Ninja's Reading List</h1>
-      <div className='Nav-bar'>
+      <div className='nav-bar'>
         <nav>
           <Link to='/'>Home</Link>
         </nav>

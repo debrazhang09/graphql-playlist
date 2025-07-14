@@ -12,10 +12,15 @@ export default function BookDetail() {
   if (error) return <p>Error loading book detail.</p>
   const {name, genre, author} = data.book;
   return (
-    <div className='book-detail'>
+    <div id='book-detail'>
       <h1>{name}</h1>
       <p>Genre: {genre}</p>
       <p>Author: {author.name} Age: {author.name}</p>
+      <p>Books:</p>
+      <ul>
+        {author.books.map((book) => (<li key={book.id}>{book.name}</li>))
+        }
+      </ul>
     </div>
   )
 }

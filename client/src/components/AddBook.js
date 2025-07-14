@@ -45,7 +45,6 @@ function AddBook() {
     setNewBook({...newBook, [name] : value});
   }
   return (
-    <div>
       <form id="add-book" onSubmit={handleSubmit}>
         <div className="field">
           <label htmlFor="name">Book name: </label>
@@ -69,8 +68,6 @@ function AddBook() {
         <button type="submit" disabled={newBookLoading}>{newBookLoading ? 'Saving ...' : 'Add Book'}</button>
         {newBookError && <p style={{color: "red"}}>New book save error : {newBookError.message}</p>}
       </form>
-
-    </div>
   );
 }
 

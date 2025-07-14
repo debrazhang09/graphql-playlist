@@ -35,6 +35,10 @@ const GET_BOOK_DETAIL= gql`
       author {
         name
         age
+        books {
+        name
+        id
+        }
       }
     }
   }

@@ -7,7 +7,6 @@ function BookList() {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error:{error.message}</p>
   return (
-    <div>
       <ul id="book-list">
         {data.books.map((book) => (
           <li key={book.id}>
@@ -16,7 +15,6 @@ function BookList() {
         ))}
 
       </ul>
-    </div>
   );
 }
 
