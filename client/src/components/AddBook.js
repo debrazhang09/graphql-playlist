@@ -8,8 +8,17 @@ function AddBook() {
     authorId: ''
   })
   const {loading, error, data} = useQuery(GET_Authors);
-  const [addBook, {data : newBookData, loading: newBookLoading, error: newBookError}] = useMutation(ADD_BOOK, {
-    refetchQueries: [{query: GET_BOOKS}]
+  const [addBook, { loading: newBookLoading, error: newBookError}] = useMutation(ADD_BOOK, {
+    update(cache, {data: {addBook}}) {
+      const existBooks = cache.readQuery({query: GET_BOOKS});
+      cache.writeQuery({
+        query: GET_BOOKS,
+        data: {
+          books: [...(existBooks?.books || null), addBook]
+        }
+      })
+
+    }
   })
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error:{error.message}</p>
