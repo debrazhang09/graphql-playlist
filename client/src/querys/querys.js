@@ -27,7 +27,7 @@ const ADD_BOOK = gql`
 `;
 
 const GET_BOOK_DETAIL= gql`
-  query GETBook($id: ID!) {
+  query GetBook($id: ID!) {
     book(id:$id) {
       id
       name
